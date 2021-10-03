@@ -1,0 +1,15 @@
+void *set_metadata_ptr(cv::Mat frame)
+{
+
+  cv::Mat *user_metadata = new cv::Mat();
+
+  frame.copyTo(*user_metadata);
+
+  return (void *)user_metadata;
+}
+
+void foo() 
+{
+  UserMeta *user_meta = /* ... */;
+  user_meta->user_meta_data = (void *)set_metadata_ptr(frame);
+}
